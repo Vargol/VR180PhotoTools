@@ -1,5 +1,0 @@
-/Users/davidburnett/Projects/VR180Tools/atomlib/bin/Debug/atomlib.dll
-/Users/davidburnett/Projects/VR180Tools/atomlib/bin/Debug/atomlib.pdb
-/Users/davidburnett/Projects/VR180Tools/atomlib/obj/Debug/atomlib.csproj.CoreCompileInputs.cache
-/Users/davidburnett/Projects/VR180Tools/atomlib/obj/Debug/atomlib.dll
-/Users/davidburnett/Projects/VR180Tools/atomlib/obj/Debug/atomlib.pdb
