@@ -1,0 +1,6 @@
+/Users/davidburnett/Projects/VR180Tools/convertVr180Photos/bin/Debug/convertVr180Photos.exe
+/Users/davidburnett/Projects/VR180Tools/convertVr180Photos/bin/Debug/convertVr180Photos.pdb
+/Users/davidburnett/Projects/VR180Tools/convertVr180Photos/obj/x86/Debug/convertVr180Photos.csprojAssemblyReference.cache
+/Users/davidburnett/Projects/VR180Tools/convertVr180Photos/obj/x86/Debug/convertVr180Photos.csproj.CoreCompileInputs.cache
+/Users/davidburnett/Projects/VR180Tools/convertVr180Photos/obj/x86/Debug/convertVr180Photos.exe
+/Users/davidburnett/Projects/VR180Tools/convertVr180Photos/obj/x86/Debug/convertVr180Photos.pdb

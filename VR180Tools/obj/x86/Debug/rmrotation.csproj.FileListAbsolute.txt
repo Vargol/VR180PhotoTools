@@ -1,0 +1,9 @@
+/Users/davidburnett/Projects/VR180Tools/VR180Tools/bin/Debug/VR180Tools.exe
+/Users/davidburnett/Projects/VR180Tools/VR180Tools/bin/Debug/VR180Tools.pdb
+/Users/davidburnett/Projects/VR180Tools/VR180Tools/bin/Debug/atomlib.dll
+/Users/davidburnett/Projects/VR180Tools/VR180Tools/bin/Debug/atomlib.pdb
+/Users/davidburnett/Projects/VR180Tools/VR180Tools/obj/x86/Debug/rmrotation.csprojAssemblyReference.cache
+/Users/davidburnett/Projects/VR180Tools/VR180Tools/obj/x86/Debug/rmrotation.csproj.CoreCompileInputs.cache
+/Users/davidburnett/Projects/VR180Tools/VR180Tools/obj/x86/Debug/rmrotation.csproj.CopyComplete
+/Users/davidburnett/Projects/VR180Tools/VR180Tools/obj/x86/Debug/VR180Tools.exe
+/Users/davidburnett/Projects/VR180Tools/VR180Tools/obj/x86/Debug/VR180Tools.pdb
