@@ -13,19 +13,11 @@ namespace convertToVr180Photo
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
             String base64jpeg;
 
             if (args.Length != 2)
             {
-                Console.WriteLine("Usage: equiToVr180Photo (lr|rl|tb|bt) equirectangular.jpg vr180.jpg");
-                Console.WriteLine("Mono Usage: mono (lr|rl|tb|bt) equiToVr180Photo.exe equirectangular.jpg vr180.jpg");
-
-                Console.WriteLine("Mono Usage: mono (lr|rl|tb|bt) convertToVr180Photo.exe equirectangular.jpg vr180.jpg");
-                Console.WriteLine("    (lr|rl|tb|bt) describes the equi-rectangular image format");
-                Console.WriteLine("    lr is left-right, rl is right-left");
-                Console.WriteLine("    tb is top-bottm, bt is bottom-top");
-                Console.WriteLine("  where the first location describes where the left eye image is located");
+                Usage();
                 return;
             }
 
@@ -65,6 +57,18 @@ namespace convertToVr180Photo
 
 
 
+        }
+
+        private static void Usage ()
+        {
+            Console.WriteLine("Usage: equiToVr180Photo (lr|rl|tb|bt) equirectangular.jpg vr180.jpg");
+            Console.WriteLine("Mono Usage: mono (lr|rl|tb|bt) equiToVr180Photo.exe equirectangular.jpg vr180.jpg");
+
+            Console.WriteLine("    (lr|rl|tb|bt) describes the equi-rectangular image format");
+            Console.WriteLine("    lr is left-right, rl is right-left");
+            Console.WriteLine("    tb is top-bottm, bt is bottom-top");
+            Console.WriteLine("  where the first location describes where the left eye image is located");
+            return;
         }
     }
 

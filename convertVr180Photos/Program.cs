@@ -96,8 +96,8 @@ namespace convertVr180Photos
         private static void Usage()
         {
 
-            Console.WriteLine("Usage: vr180ToEquiPhoto vr180Photo.jpg equiPhoto.jpg");
-            Console.WriteLine("Mono Usage: mono vr180ToEquiPhoto vr180Photo.jpg equiPhoto.jpg");
+            Console.WriteLine("Usage: vr180ToEquiPhoto.exe vr180Photo.jpg equiPhoto.jpg");
+            Console.WriteLine("Mono Usage: mono vr180ToEquiPhoto.exe vr180Photo.jpg equiPhoto.jpg");
             return;
 
         }
