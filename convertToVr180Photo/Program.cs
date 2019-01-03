@@ -15,7 +15,7 @@ namespace convertToVr180Photo
         {
             String base64jpeg;
 
-            if (args.Length != 2)
+            if (args.Length != 3)
             {
                 Usage();
                 return;
