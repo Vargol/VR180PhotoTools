@@ -343,8 +343,8 @@ namespace convertVr180Photos
 
 
                         var newImage = Convert.FromBase64String(attribute.Value + "==".Substring(0, attribute.Value.Length % 4));
-                        FileStream jpegFile = new FileStream("newjpeg.jpg", FileMode.OpenOrCreate, FileAccess.Write);
-                        jpegFile.Write(newImage, 0, newImage.Length);
+                        //FileStream jpegFile = new FileStream("newjpeg.jpg", FileMode.OpenOrCreate, FileAccess.Write);
+                        //jpegFile.Write(newImage, 0, newImage.Length);
                         return newImage;
                     }
                 }
