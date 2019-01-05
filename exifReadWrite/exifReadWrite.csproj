@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0BF2A370-042D-4CC6-9ED8-336DD8031332}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>exifReadWrite</RootNamespace>
+    <AssemblyName>exifReadWrite</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ExifReadWrite.cs" />
+    <Compile Include="IFD.cs" />
+    <Compile Include="ExifTag.cs" />
+    <Compile Include="BitConverterEx.cs" />
+    <Compile Include="ExifProperty.cs" />
+    <Compile Include="ExifInterOperability.cs" />
+    <Compile Include="MathEx.cs" />
+    <Compile Include="ExifBitConverter.cs" />
+    <Compile Include="ExifTagFactory.cs" />
+    <Compile Include="ExifExceptions.cs" />
+    <Compile Include="ExifExtendedProperty.cs" />
+    <Compile Include="ExifEnums.cs" />
+    <Compile Include="ExifPropertyFactory.cs" />
+    <Compile Include="ExifPropertyCollection.cs" />
+    <Compile Include="ImageFile.cs" />
+    <Compile Include="ImageFileFormat.cs" />
+    <Compile Include="JPEGExceptions.cs" />
+    <Compile Include="JPEGFile.cs" />
+    <Compile Include="JPEGSection.cs" />
+    <Compile Include="JPEGMarker.cs" />
+    <Compile Include="TIFFStrip.cs" />
+    <Compile Include="TIFFHeader.cs" />
+    <Compile Include="TIFFFile.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="ImageFileDirectory.cs" />
+    <Compile Include="ImageFileDirectoryEntry.cs" />
+    <Compile Include="PNGProperty.cs" />
+    <Compile Include="PNGFile.cs" />
+    <Compile Include="PNGChunk.cs" />
+    <Compile Include="Utility.cs" />
+    <Compile Include="JFIFThumbnail.cs" />
+    <Compile Include="JFIFExtendedProperty.cs" />
+    <Compile Include="JFIFEnums.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -11,7 +11,7 @@ namespace atomlib
         public Action<BinaryReader, BinaryWriter> writeBox { get; private set; }
 
 
-        Container[] children; 
+    //    Container[] children = null; 
 
         public Container()
         {

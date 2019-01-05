@@ -36,5 +36,15 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\exifReadWrite\exifReadWrite.csproj">
+      <Project>{0BF2A370-042D-4CC6-9ED8-336DD8031332}</Project>
+      <Name>exifReadWrite</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JpegParser\JpegParser.csproj">
+      <Project>{0ACFEA89-465A-469E-B120-30BEA4A85949}</Project>
+      <Name>JpegParser</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

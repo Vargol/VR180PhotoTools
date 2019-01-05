@@ -9,6 +9,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vr180ToEquiPhoto", "convert
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "equiToVr180Photo", "convertToVr180Photo\equiToVr180Photo.csproj", "{52095CA7-8B9F-4CF5-932C-7E14D308FE7A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "exifReadWrite", "exifReadWrite\exifReadWrite.csproj", "{0BF2A370-042D-4CC6-9ED8-336DD8031332}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JpegParser", "JpegParser\JpegParser.csproj", "{0ACFEA89-465A-469E-B120-30BEA4A85949}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{074043B5-5EFF-43D0-A539-92576C226FBA}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+		LICENSE = LICENSE
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -31,5 +41,13 @@ Global
 		{52095CA7-8B9F-4CF5-932C-7E14D308FE7A}.Debug|x86.Build.0 = Debug|x86
 		{52095CA7-8B9F-4CF5-932C-7E14D308FE7A}.Release|x86.ActiveCfg = Release|x86
 		{52095CA7-8B9F-4CF5-932C-7E14D308FE7A}.Release|x86.Build.0 = Release|x86
+		{0BF2A370-042D-4CC6-9ED8-336DD8031332}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0BF2A370-042D-4CC6-9ED8-336DD8031332}.Debug|x86.Build.0 = Debug|Any CPU
+		{0BF2A370-042D-4CC6-9ED8-336DD8031332}.Release|x86.ActiveCfg = Release|Any CPU
+		{0BF2A370-042D-4CC6-9ED8-336DD8031332}.Release|x86.Build.0 = Release|Any CPU
+		{0ACFEA89-465A-469E-B120-30BEA4A85949}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0ACFEA89-465A-469E-B120-30BEA4A85949}.Debug|x86.Build.0 = Debug|Any CPU
+		{0ACFEA89-465A-469E-B120-30BEA4A85949}.Release|x86.ActiveCfg = Release|Any CPU
+		{0ACFEA89-465A-469E-B120-30BEA4A85949}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

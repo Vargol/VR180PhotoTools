@@ -29,5 +29,7 @@ You can find the source code on Github
 https://github.com/Vargol/VR180PhotoTools
 
 This version targets for Framework 4.7.2 and has no dependencies.
-The code is also currently compatiable with .NET Core 2.2 but requires System.Drawing.Common
-from NuGet which in turn requres libgdiplus for use on macOS and Linux.
+
+The code for ExifReadWrite is taken from ExifLibray https://github.com/devedse/exiflibrary
+and is used under the Terms of the MIT licence included in the source repository.
+
