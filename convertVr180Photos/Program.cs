@@ -48,7 +48,7 @@ namespace convertVr180Photos
             foreach (var segment in jpegSegments)
             {
 
-                Console.WriteLine(segment.Item1);
+                //Console.WriteLine(segment.Item1);
 
                 if (segment.Item1 == "EXIF")
                 {
@@ -88,7 +88,8 @@ namespace convertVr180Photos
             {
                 sb.Append(md5hash[i].ToString("x2"));
             }
-            Console.WriteLine(sb.ToString());
+
+            //            Console.WriteLine(sb.ToString());
 
             if (extendXMP.Length > 0)
             {

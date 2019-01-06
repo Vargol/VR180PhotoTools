@@ -162,28 +162,6 @@ namespace JpegParser
 
             }
 
-            //int height = firstHalf.Height;
-            //int width = firstHalf.Width;
-
-            //    if (firstHalf != null)
-            //    {
-
-            //        foreach (PropertyItem property in originalImage.PropertyItems)
-            //        {
-            //            if (property.Id == EXIF_HEIGHT_ID)
-            //            {
-            //                byte[] newHeight = BitConverter.GetBytes(height);
-            //                property.Value = newHeight;
-            //            }
-            //            else if (property.Id == EXIF_WIDTH_ID)
-            //            {
-            //                byte[] newWidth = BitConverter.GetBytes(width);
-            //                property.Value = newWidth;
-            //            }
-
-            //            firstHalf.SetPropertyItem(property);
-            //        }
-            //    }
 
             return new Vr180Jpeg(firstHalf, secondHalf, exiflib);
 
@@ -376,7 +354,7 @@ namespace JpegParser
 
                     }
 
-                    // write out the remaining
+                    // write out the remaining bit of the extended xmp
                     ushort lengthLeft = (ushort)(extendedXmpLength - offset);
                     ushort segmentLength = (ushort)(lengthLeft + 77);
 
@@ -456,7 +434,7 @@ namespace JpegParser
 
                 if (buffer[1] == exifHeader)
                 {
-                    Console.WriteLine("Might be a Exif");
+                    //Console.WriteLine("Might be a Exif");
                     var exif = this.ValidateExif(segment);
                     if (exif != null)
                     {
@@ -465,7 +443,7 @@ namespace JpegParser
                 }
                 else if (buffer[1] == jfifHeader)
                 {
-                    Console.WriteLine("Might be a Jiff");
+                    //Console.WriteLine("Might be a Jiff");
                     var jfif = this.ValidateJfif(segment);
                     if (jfif != null)
                     {
@@ -502,7 +480,7 @@ namespace JpegParser
                 {
                     if (attribute.Name.StartsWith("GPano:", StringComparison.InvariantCulture) || attribute.Name.Equals("xmpNote:HasExtendedXMP"))
                     {
-                        Console.WriteLine(attribute.Name + "=" + attribute.Value);
+                        // Console.WriteLine(attribute.Name + "=" + attribute.Value);
                         panoDict.Add(attribute.Name, attribute.Value);
                     }
                 }
@@ -786,7 +764,7 @@ namespace JpegParser
 
                     foreach (var prop in exif.Properties)
                     {
-                        Console.WriteLine(prop.Name);
+                        // Console.WriteLine(prop.Name);
                         if (prop.Name == "PixelXDimension")
                         {
                             prop.Value = (uint)width;
