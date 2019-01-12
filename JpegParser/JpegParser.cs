@@ -42,15 +42,17 @@ namespace JpegParser
         {
         }
 
-        public string GetXmpMetadata(int width, int height, float degrees, byte[] digest)
+        public string GetXmpMetadata(int width, int height, float widthDegrees, float heightDegrees, byte[] digest)
         {
 
-            float cropFactor = 360.0f / degrees;
+            float widthCropFactor = 360.0f / widthDegrees;
+            float heightCropFactor = 180.0f / heightDegrees;
 
-            int fullHeight = (int)(cropFactor * height);
-            int fullWidth = (int)(cropFactor * width);
+            int fullHeight = (int)(heightCropFactor * height);
+            int fullWidth = (int)(widthCropFactor * width);
 
             int cropLeft = (fullWidth - width) / 2;
+            int cropTop = (fullHeight - height) / 2;
 
             StringBuilder sb = new StringBuilder();
 
@@ -72,11 +74,11 @@ namespace JpegParser
                 + " GPano:PoseRollDegrees=\"0.0\""
                 + " GPano:PosePitchDegrees=\"0.0\""
                 + " GPano:CroppedAreaLeftPixels=\"" + cropLeft + "\""
-                + " GPano:CroppedAreaTopPixels=\"0\""
+                + " GPano:CroppedAreaTopPixels=\"" + cropTop + "\""
                 + " GPano:CroppedAreaImageWidthPixels=\"" + width + "\""
                 + " GPano:CroppedAreaImageHeightPixels=\"" + height + "\""
                 + " GPano:FullPanoWidthPixels=\"" + fullWidth + "\""
-                + " GPano:FullPanoHeightPixels=\"" + height + "\""
+                + " GPano:FullPanoHeightPixels=\"" + fullHeight + "\""
                 + " GPano:InitialViewHeadingDegrees=\"180\""
                 + " GPano:ProjectionType=\"equirectangular\""
                 //               + " GAudio:Mime=\"audio/mp4\""
