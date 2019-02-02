@@ -20,11 +20,26 @@ namespace convertVr180Photos
         {
 
 
-            if (args.Length != 2)
+            string GetArgument(IEnumerable<string> opts, string option) => opts.SkipWhile(i => i != option).Skip(1).Take(1).FirstOrDefault();
+
+            string equiJpeg = GetArgument(args, "-o");
+            string vrJpeg = GetArgument(args, "-i");
+            string jpegQualityArg = GetArgument(args, "-q");
+
+            long jpegQuality = 100L;
+
+
+            if (equiJpeg == null || vrJpeg == null)
             {
                 Usage();
                 return;
             }
+
+            if (jpegQualityArg != null)
+            {
+                jpegQuality = long.Parse(jpegQualityArg);
+            }
+
 
             LinkedList<Tuple<string, byte[]>> jpegSegments;
             JpegFile jpegFile = new JpegFile();
@@ -33,12 +48,13 @@ namespace convertVr180Photos
             byte[] zeroByte = { 0x0 };
             byte[] extendedXMPSignature = null;
             string extendXMP = "";
-            string inputJpeg = args[0];
-            string outputJpeg = args[1];
+
+//            string inputJpeg = args[0];
+//            string outputJpeg = args[1];
             ExifReadWrite exif = new ExifReadWrite();
 
 
-            using (var stream = File.OpenRead(inputJpeg))
+            using (var stream = File.OpenRead(vrJpeg))
                 jpegSegments = jpegFile.Parse(stream);
 
             bool xmpFound = false;
@@ -97,7 +113,7 @@ namespace convertVr180Photos
                 var newJpeg = jpegFile.ProcessExtendedXMPXML(extendXMP);
                 if (newJpeg != null)
                 {
-                    var returnCode = jpegFile.WriteCombineImage(inputJpeg, outputJpeg, newJpeg, exif);
+                    var returnCode = jpegFile.WriteCombineImage(vrJpeg, equiJpeg, newJpeg, exif, jpegQuality);
                 }
             }
 
@@ -106,8 +122,14 @@ namespace convertVr180Photos
         private static void Usage()
         {
 
-            Console.WriteLine("Usage: vr180ToEquiPhoto.exe vr180Photo.jpg equiPhoto.jpg");
-            Console.WriteLine("Mono Usage: mono vr180ToEquiPhoto.exe vr180Photo.jpg equiPhoto.jpg");
+            Console.WriteLine("Usage: vr180ToEquiPhoto.exe -i vr180Photo.jpg -o equiPhoto.jpg [-q 90]");
+            Console.WriteLine("Mono Usage: mono vr180ToEquiPhoto.exe -i vr180Photo.jpg -o equiPhoto.jpg [-q 90]");
+            Console.WriteLine("");
+            Console.WriteLine("    -i the input file path, a VR180 photo JPEG image, right eye image embedded in the left eye image.");
+            Console.WriteLine("");
+            Console.WriteLine("    -o the output file path");
+            Console.WriteLine("");
+            Console.WriteLine("    -q Optional parameter with the jpeg quality setting for the two new jpeg files, 0-100, 0 is very low quailty, 100 should be lossless, defaults to 100");
             return;
 
         }

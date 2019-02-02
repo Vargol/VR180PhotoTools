@@ -27,6 +27,9 @@ namespace convertToVr180Photo
             var fov = GetArgument(args, "-v");
             string equiJpeg = GetArgument(args, "-i");
             string outJpeg = GetArgument(args, "-o");
+            string jpegQualityArg = GetArgument(args, "-q");
+
+            long jpegQuality = 100L;
 
             if (format == null || equiJpeg == null || outJpeg == null)
             {
@@ -55,6 +58,11 @@ namespace convertToVr180Photo
                 return;
             }
 
+            if (jpegQualityArg != null)
+            {
+                jpegQuality = long.Parse(jpegQualityArg);
+            }
+
             float widthDegrees = float.Parse(fovValues[0]);
             float heightDegrees = float.Parse(fovValues[1]);
 
@@ -63,11 +71,11 @@ namespace convertToVr180Photo
             string base64jpeg;
 
             var jpegFile = new JpegParser.JpegFile();
-            var jpegs = jpegFile.SplitImage(equiJpeg, format);
+            var jpegs = jpegFile.SplitImage(equiJpeg, format, jpegQuality);
 
             // the right image gets embed in the left image.
             using (EncoderParameters encoderParameters = new EncoderParameters(1))
-            using (EncoderParameter encoderParameter = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, 90L))
+            using (EncoderParameter encoderParameter = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, jpegQuality))
             using (MemoryStream jpegms = new MemoryStream())
             {
                 ImageCodecInfo codecInfo = ImageCodecInfo.GetImageDecoders().First(codec => codec.FormatID == ImageFormat.Jpeg.Guid);
@@ -100,8 +108,8 @@ namespace convertToVr180Photo
 
         private static void Usage ()
         {
-            Console.WriteLine("Usage: equiToVr180Photo -f (lr|rl|tb|bt) -i equirectangular.jpg -o vr180.jpg [-v 180x180]");
-            Console.WriteLine("Mono Usage: mono (lr|rl|tb|bt) -f (lr|rl|tb|bt) -i equirectangular.jpg -o vr180.jpg -v 180x180");
+            Console.WriteLine("Usage: equiToVr180Photo -f (lr|rl|tb|bt) -i equirectangular.jpg -o vr180.jpg [-v 180x180] [-q 90]");
+            Console.WriteLine("Mono Usage: mono (lr|rl|tb|bt) -f (lr|rl|tb|bt) -i equirectangular.jpg -o vr180.jpg [-v 180x180] [-q 90]");
 
             Console.WriteLine("    -f (lr|rl|tb|bt) describes the equi-rectangular image format");
             Console.WriteLine("                     lr is left-right, rl is right-left");
@@ -115,6 +123,7 @@ namespace convertToVr180Photo
             Console.WriteLine("    -v Optional parameter decribing the field of view of the equi-rectangular image");
             Console.WriteLine("       the value should be in the format of horizonal degrees and vertical degees seperated by x e.g. 180x120 ");
             Console.WriteLine("       if the parameter is not used then the value 180x180 is used by default.");
+            Console.WriteLine("    -q Optional parameter with the jpeg quality setting for the two new jpeg files, 0-100, 0 is very low quailty, 100 should be lossless, defaults to 100");
             return;
         }
     }

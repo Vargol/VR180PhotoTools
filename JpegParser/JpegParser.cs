@@ -14,11 +14,12 @@ namespace JpegParser
     public class Vr180Jpeg
     {
 
-        public Vr180Jpeg (Bitmap left, Bitmap right, ExifReadWrite exifSegment)
+        public Vr180Jpeg (Bitmap left, Bitmap right, ExifReadWrite exifSegment, long jpegQuality)
         {
             GetLeftEye = left;
             GetRightEye = right;
             ExifSegment = exifSegment;
+            JpegQuality = jpegQuality;
 
         }
 
@@ -34,6 +35,7 @@ namespace JpegParser
 
         public ExifReadWrite ExifSegment { get; private set; }
 
+        public long JpegQuality { get; private set; }
     }
 
     public class JpegFile
@@ -88,7 +90,7 @@ namespace JpegParser
 
         }
 
-        public Vr180Jpeg SplitImage(string orginalJpeg, string format)
+        public Vr180Jpeg SplitImage(string orginalJpeg, string format, long newJpegQuailty)
         {
             Bitmap firstHalf, secondHalf;
             Bitmap originalImage = new Bitmap(Image.FromFile(orginalJpeg));
@@ -165,7 +167,7 @@ namespace JpegParser
             }
 
 
-            return new Vr180Jpeg(firstHalf, secondHalf, exiflib);
+            return new Vr180Jpeg(firstHalf, secondHalf, exiflib, newJpegQuailty);
 
         }
 
@@ -194,7 +196,7 @@ namespace JpegParser
 
             // the right image gets embed in the left image.
             using (EncoderParameters encoderParameters = new EncoderParameters(1))
-            using (EncoderParameter encoderParameter = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, 90L))
+            using (EncoderParameter encoderParameter = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, jpegs.JpegQuality))
             using (MemoryStream jpegms = new MemoryStream())
             {
                 ImageCodecInfo codecInfo = ImageCodecInfo.GetImageDecoders().First(codec => codec.FormatID == ImageFormat.Jpeg.Guid);
@@ -617,7 +619,7 @@ namespace JpegParser
 
         }
 
-        public string WriteCombineImage(string inputJpeg, string outputJpeg, byte[] newJpeg, ExifReadWrite exif)
+        public string WriteCombineImage(string inputJpeg, string outputJpeg, byte[] newJpeg, ExifReadWrite exif, long jpegQuality)
         {
 
 
@@ -685,7 +687,7 @@ namespace JpegParser
 
 
                 using (EncoderParameters encoderParameters = new EncoderParameters(1))
-                using (EncoderParameter encoderParameter = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, 90L))
+                using (EncoderParameter encoderParameter = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, jpegQuality))
                 {
                     ImageCodecInfo codecInfo = ImageCodecInfo.GetImageDecoders().First(codec => codec.FormatID == ImageFormat.Jpeg.Guid);
                     encoderParameters.Param[0] = encoderParameter;
