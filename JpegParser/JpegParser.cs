@@ -583,7 +583,7 @@ namespace JpegParser
 
             if (offset != xmpLengthSoFar)
             {
-                throw new Exception("Extended XMP offset greated that current partial length.");
+                throw new Exception("Extended XMP offset greater than current partial length.");
             }
 
             return Encoding.UTF8.GetString(item2, 35 + 40, item2.Length - 75);
@@ -608,6 +608,7 @@ namespace JpegParser
 
 
                         var newImage = Convert.FromBase64String(attribute.Value + "==".Substring(0, attribute.Value.Length % 4));
+                        // uncomment lines below to write out the embedded image. 
                         //FileStream jpegFile = new FileStream("newjpeg.jpg", FileMode.OpenOrCreate, FileAccess.Write);
                         //jpegFile.Write(newImage, 0, newImage.Length);
                         return newImage;
@@ -631,6 +632,8 @@ namespace JpegParser
 
             int EXIF_HEIGHT_ID = 0x0100;
             int EXIF_WIDTH_ID = 0x0101;
+
+            // Draw both images to one bitmap
 
             if (img1.Width > img1.Height)
             {
@@ -676,7 +679,7 @@ namespace JpegParser
                 newBitmap.SetPropertyItem(property);
             }
 
-
+            // clear up the memory, we only need the bitmap from the combined image for here in.
             canvas.Dispose();
             img1.Dispose();
             img2.Dispose();
@@ -685,7 +688,7 @@ namespace JpegParser
             using (FileStream jpegOut = new FileStream(outputJpeg, FileMode.OpenOrCreate, FileAccess.Write))
             {
 
-
+                // write the combined image in a in-memory temporary jpeg as we need to manipulate the metadata before writing to disk.
                 using (EncoderParameters encoderParameters = new EncoderParameters(1))
                 using (EncoderParameter encoderParameter = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, jpegQuality))
                 {
