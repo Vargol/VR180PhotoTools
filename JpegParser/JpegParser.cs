@@ -606,8 +606,20 @@ namespace JpegParser
                     {
                         Console.WriteLine("Found GImage");
 
+                        var padding = "";
+                        switch (attribute.Value.Length % 4)
+                        {
 
-                        var newImage = Convert.FromBase64String(attribute.Value + "==".Substring(0, attribute.Value.Length % 4));
+                            case 2:
+                                padding = "==";
+                                break;
+
+                            case 3:
+                                padding = "=";
+                                break;
+                        };
+
+                        var newImage = Convert.FromBase64String(attribute.Value + padding);
                         // uncomment lines below to write out the embedded image. 
                         //FileStream jpegFile = new FileStream("newjpeg.jpg", FileMode.OpenOrCreate, FileAccess.Write);
                         //jpegFile.Write(newImage, 0, newImage.Length);
